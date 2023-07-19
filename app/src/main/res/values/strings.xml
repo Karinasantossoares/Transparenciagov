@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">TransparenciaGov</string>
+    <string name="app_name">InfoCam</string>
+    <string name="title_list_congress_person">Digite o nome</string>
+    <string name="load_more_text">Carregar mais</string>
+    <string name="message_error_generic">Erro ao processar sua solicitação. Por favor , novamente mais tarde.</string>
+    <string name="text_empty_search_view">Você precisa digitar uma pesquisa válida\n</string>
+    <string name="internet_error">Por favor , verifique a sua internet e tente novamente</string>
+    <string name="ok_got_it">OK, ENTENDI</string>
+    <string name="try_again_text">TENTAR NOVAMENTE</string>
+    <string name="close_text">FECHAR</string>
+    <string name="ok_text">OK</string>
+    <string name="confirm_text">Confirmar</string>
+    <string name="states_text">Filtrar por estados</string>
+    <string name="text_send_email">Enviar e-mail</string>
+    <string name="text_date_of_birth">Data de nascimento</string>
+    <string name="text_party">Partido</string>
+    <string name="text_phone">Telefone</string>
+    <string name="text_situation">Situação</string>
+    <string name="text_expenses">Despesas</string>
+    <string name="atualizatuion_text">Atualizado em :</string>
+    <string name="tex_cipher">R$</string>
 </resources>
