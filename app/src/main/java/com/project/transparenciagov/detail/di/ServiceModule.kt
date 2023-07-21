@@ -6,6 +6,8 @@ import com.project.transparenciagov.detail.data.datasource.DetailCongressPersonD
 import com.project.transparenciagov.detail.data.repository.DetailCongressPersonRepositoryImpl
 import com.project.transparenciagov.detail.domain.repository.DetailCongressPersonRepository
 import com.project.transparenciagov.detail.domain.usecase.GetDetailCongressPersonUseCase
+import com.project.transparenciagov.detail.domain.usecase.GetExpenseUseCase
+import com.project.transparenciagov.detail.ui.DetailCongressPersonViewModel
 import com.project.transparenciagov.home.data.api.CongressPersonService
 import com.project.transparenciagov.home.data.api.ReferenceService
 import com.project.transparenciagov.home.data.datasource.AllCongressPersonDataSource
@@ -32,5 +34,14 @@ val detailModule = module {
         DetailCongressPersonDataSourceImpl(service = get())
     }
     factory { GetDetailCongressPersonUseCase(repository = get()) }
+    factory { GetExpenseUseCase(repository = get()) }
+    viewModel { parameters->
+        DetailCongressPersonViewModel(
+            useCase = get(),
+            expenseUseCase = get(),
+            context = get(),
+            id = parameters.get()
+        )
+    }
 
 }

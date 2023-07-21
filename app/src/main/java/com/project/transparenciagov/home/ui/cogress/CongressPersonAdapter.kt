@@ -20,6 +20,8 @@ class CongressPersonAdapter :
             notifyDataSetChanged()
         }
 
+    var onClickItem : (CongressPerson) -> Unit = {}
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryDebitViewHolder {
         val binding = ProfileCongressItemBinding.inflate(LayoutInflater.from(parent.context))
@@ -38,6 +40,9 @@ class CongressPersonAdapter :
 
         fun bind(data: CongressPerson) {
             with(binding) {
+                binding.container.setOnClickListener {
+                    onClickItem.invoke(data)
+                }
                 nameCongressPerson.text = data.name
                 brokenPerson.text = data.siglaPartido
                 Picasso.get()

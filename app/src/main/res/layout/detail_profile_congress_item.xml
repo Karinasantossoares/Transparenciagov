@@ -7,13 +7,13 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_title_details_members"
+        android:id="@+id/textDetailExpense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="41dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -28,11 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:text="@string/tex_cipher"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="13sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/tv_title_details_members"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_details_members" />
+        app:layout_constraintLeft_toLeftOf="@id/textDetailExpense"
+        app:layout_constraintTop_toBottomOf="@id/textDetailExpense" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_price_list"
@@ -40,11 +40,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
         android:layout_marginTop="19dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="13sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@id/cipher"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_details_members"
+        app:layout_constraintTop_toBottomOf="@id/textDetailExpense"
         tools:text="45,21" />
 
 
@@ -54,11 +54,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="47dp"
         android:layout_marginTop="19dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="@id/tv_title_details_members"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_details_members"
+        app:layout_constraintRight_toRightOf="@id/textDetailExpense"
+        app:layout_constraintTop_toBottomOf="@id/textDetailExpense"
         tools:text="26/06/1997" />
 
     <View

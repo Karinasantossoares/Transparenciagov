@@ -5,14 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.project.transparenciagov.R
 import com.project.transparenciagov.core.components.error.ErrorGovDialog
 import com.project.transparenciagov.core.components.statesbottomsheet.StatesBottomSheet
 import com.project.transparenciagov.databinding.FragmentCongressPersonListBinding
+import com.project.transparenciagov.detail.ui.DetailCongressPersonFragment.Companion.KEY_ARGS_ID
+import com.project.transparenciagov.detail.ui.action.DetailCongressPersonAction
 import com.project.transparenciagov.home.ui.cogress.action.CongressPersonAction
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -95,8 +100,8 @@ class CongressPersonListFragment : Fragment() {
             RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                    if (!recyclerView.canScrollVertically(1)) {
-                        viewModel.onPagination()
+                if (!recyclerView.canScrollVertically(1)) {
+                    viewModel.onPagination()
                 }
             }
         })
@@ -128,6 +133,11 @@ class CongressPersonListFragment : Fragment() {
         }
         statesBottomSheet.confirmButtonSelected = {
             viewModel.confirmFilterStates(states = it)
+        }
+        congressPersonAdapter.onClickItem = {
+            findNavController().navigate(R.id.toCongressPersonDetail, bundleOf(
+                KEY_ARGS_ID to it.id
+            ))
         }
 
     }

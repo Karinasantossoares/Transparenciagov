@@ -12,6 +12,7 @@ class DetailMapper {
         DetailModel(
             id = item.id,
             civilName = item.civilName ?: "",
+            dateOfBirthday = item.dateOfBirthiday,
             lastStatus = LastStatus(
                 urlFoto = item.lastStatus.urlFoto,
                 siglaPartido = item.lastStatus.siglaPartido,

@@ -9,5 +9,14 @@
         android:id="@+id/congressPersonListFragment"
         tools:layout="@layout/fragment_congress_person_list"
         android:name="com.project.transparenciagov.home.ui.cogress.CongressPersonListFragment"
-        android:label="CongressPersonListFragment" />
+        android:label="CongressPersonListFragment" >
+        <action
+            android:id="@+id/toCongressPersonDetail"
+            app:destination="@id/detailCongressPersonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCongressPersonFragment"
+        tools:layout="@layout/fragment_congress_person_detail"
+        android:name="com.project.transparenciagov.detail.ui.DetailCongressPersonFragment"
+        android:label="DetailCongressPersonFragment" />
 </navigation>

@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class DetailPersonResponse(
     @SerializedName("id") val id: String,
     @SerializedName("nomeCivil") val civilName: String,
-    @SerializedName("ultimoStatus") val lastStatus: LastStatus
+    @SerializedName("ultimoStatus") val lastStatus: LastStatus,
+    @SerializedName("dataNascimento") val dateOfBirthiday: String
 )
 
 data class LastStatus(

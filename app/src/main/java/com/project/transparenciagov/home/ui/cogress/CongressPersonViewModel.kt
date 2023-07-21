@@ -7,11 +7,13 @@ import com.project.transparenciagov.R
 import com.project.transparenciagov.core.EmptyListException
 import com.project.transparenciagov.core.UseCaseException
 import com.project.transparenciagov.home.domain.usecase.CongressPersonUseCase
-import com.project.transparenciagov.home.ui.cogress.action.CongressPersonAction
-import com.project.transparenciagov.home.ui.cogress.state.CongressPersonState
+import com.project.transparenciagov.detail.ui.action.DetailCongressPersonAction
+import com.project.transparenciagov.detail.ui.state.DetailCongressPersonState
 import com.project.transparenciagov.core.util.BaseViewModel
 import com.project.transparenciagov.home.domain.model.StatesModel
 import com.project.transparenciagov.home.domain.usecase.AllStatesUseCase
+import com.project.transparenciagov.home.ui.cogress.action.CongressPersonAction
+import com.project.transparenciagov.home.ui.cogress.state.CongressPersonState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -26,7 +28,7 @@ internal class CongressPersonViewModel(
     private val statesUseCase: AllStatesUseCase,
     private val context: Application,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : BaseViewModel<CongressPersonState, CongressPersonAction>(CongressPersonState()) {
+) : BaseViewModel<CongressPersonState, DetailCongressPersonAction>(CongressPersonState()) {
 
     private var requestPending = false
 
