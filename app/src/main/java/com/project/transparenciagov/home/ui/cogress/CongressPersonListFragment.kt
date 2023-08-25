@@ -14,10 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.project.transparenciagov.R
 import com.project.transparenciagov.core.components.error.ErrorGovDialog
-import com.project.transparenciagov.core.components.statesbottomsheet.StatesBottomSheet
+import com.project.transparenciagov.core.components.bottomsheets.StatesBottomSheet
 import com.project.transparenciagov.databinding.FragmentCongressPersonListBinding
 import com.project.transparenciagov.detail.ui.DetailCongressPersonFragment.Companion.KEY_ARGS_ID
-import com.project.transparenciagov.detail.ui.action.DetailCongressPersonAction
 import com.project.transparenciagov.home.ui.cogress.action.CongressPersonAction
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,17 +57,21 @@ class CongressPersonListFragment : Fragment() {
 
     private fun setupObservable() {
         lifecycleScope.launch {
-            viewModel.stateLiveData.collect { state ->
-                statesBottomSheet.list = state.listStatesModel
-                congressPersonAdapter.listCongressPerson = state.list
-                if (state.shimmerLoading.not()) {
-                    binding.shimmerViewContainer.stopShimmer()
-                } else {
-                    binding.shimmerViewContainer.startShimmer()
-                }
-                binding.shimmerViewContainer.isVisible = state.shimmerLoading
-                binding.recyclerPerson.isVisible = state.shimmerLoading.not()
+            with(binding) {
+                viewModel.stateLiveData.collect { state ->
+                    statesBottomSheet.list = state.listStatesModel
+                    congressPersonAdapter.listCongressPerson = state.list
+                    if (state.shimmerLoading.not()) {
+                        shimmerViewContainer.stopShimmer()
+                    } else {
+                        shimmerViewContainer.startShimmer()
+                    }
 
+                    shimmerViewContainer.isVisible = state.shimmerLoading
+                    recyclerPerson.isVisible = state.shimmerLoading.not()
+                    customChip.bind(state.states.toMutableList())
+
+                }
             }
         }
         lifecycleScope.launch {
@@ -86,8 +89,7 @@ class CongressPersonListFragment : Fragment() {
                     }
 
                     is CongressPersonAction.OpenBottomSheet -> statesBottomSheet.show(
-                        childFragmentManager,
-                        ""
+                        requireActivity().supportFragmentManager
                     )
 
                 }
@@ -96,6 +98,10 @@ class CongressPersonListFragment : Fragment() {
     }
 
     private fun setupListener() {
+        binding.customChip.onRemoveItem = {
+            viewModel.confirmFilterStates(it)
+            statesBottomSheet.removeFilterForChips(it.toMutableList())
+        }
         binding.recyclerPerson.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -134,10 +140,13 @@ class CongressPersonListFragment : Fragment() {
         statesBottomSheet.confirmButtonSelected = {
             viewModel.confirmFilterStates(states = it)
         }
+
         congressPersonAdapter.onClickItem = {
-            findNavController().navigate(R.id.toCongressPersonDetail, bundleOf(
-                KEY_ARGS_ID to it.id
-            ))
+            findNavController().navigate(
+                R.id.toCongressPersonDetail, bundleOf(
+                    KEY_ARGS_ID to it.id
+                )
+            )
         }
 
     }

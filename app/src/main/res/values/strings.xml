@@ -19,4 +19,7 @@
     <string name="text_expenses">Despesas</string>
     <string name="atualizatuion_text">Atualizado em :</string>
     <string name="tex_cipher">R$</string>
+    <string name="frentes">Frentes</string>
+    <string name="access_text">Baixar PDF</string>
+    <string name="know_more_text">Saber mais sobre</string>
 </resources>

@@ -25,7 +25,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-val detailModule = module {
+val frontModule = module {
     factory { get<Retrofit>().create(DetailService::class.java) }
     factory<DetailCongressPersonRepository> {
         DetailCongressPersonRepositoryImpl(dataSource = get())

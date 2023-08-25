@@ -50,7 +50,7 @@ internal class DetailCongressPersonViewModel(
                 onError(it)
             }
             .collectLatest { list ->
-
+                updateState { it.setSuccessExpense(list) }
             }
     }
 
@@ -79,6 +79,10 @@ internal class DetailCongressPersonViewModel(
             ).run()
         }
 
+    }
+
+    fun navigateToFrontCongress() {
+        DetailCongressPersonAction.NavigateToFront(id).run()
     }
 
 }

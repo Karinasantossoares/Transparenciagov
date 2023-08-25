@@ -1,17 +1,15 @@
-package com.project.transparenciagov.core.components.statesbottomsheet
+package com.project.transparenciagov.core.components.bottomsheets
 
 import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.project.transparenciagov.databinding.ErrorGovComponentBinding
+import com.project.transparenciagov.R
 import com.project.transparenciagov.databinding.StatesBottomSheetBinding
 import com.project.transparenciagov.home.domain.model.StatesModel
 
@@ -30,6 +28,9 @@ class StatesBottomSheet : BottomSheetDialogFragment() {
     var confirmButtonSelected: (List<StatesModel>) -> Unit = {}
     var requestStates: () -> Unit = {}
 
+    override fun getTheme(): Int {
+        return R.style.CustomBottomSheetDialog
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
@@ -72,6 +73,16 @@ class StatesBottomSheet : BottomSheetDialogFragment() {
                 dismiss()
             }
         }
+    }
+
+    fun show(manager: FragmentManager) {
+        if (!isAdded) {
+            super.showNow(manager, "states")
+        }
+    }
+
+    fun removeFilterForChips(currentList: MutableList<StatesModel>) {
+        adapter.listItemSelected = currentList
     }
 
 

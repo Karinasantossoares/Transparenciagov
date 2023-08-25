@@ -9,38 +9,7 @@ import com.project.transparenciagov.home.domain.model.StatesModel
 data class DetailCongressPersonState(
     val detailModel: DetailModel = DetailModel(),
     val isLoading: Boolean = false,
-    val listExpenseModel: List<ExpenseModel> = listOf(
-        ExpenseModel(
-            "Gsatos com combustpivel",
-            documentValue = "147.80",
-            documentDate = "24/07/2023"
-        ),
-        ExpenseModel(
-            "Gsatos com comida",
-            documentValue = "11447.80",
-            documentDate = "14/07/2023"
-        ),
-        ExpenseModel(
-            "Gastos com comida",
-            documentValue = "11447.80",
-            documentDate = "14/07/2023"
-        ),
-        ExpenseModel(
-            "Gsatos com comida",
-            documentValue = "11447.80",
-            documentDate = "14/07/2023"
-        ),
-        ExpenseModel(
-            "Gsatos com comida",
-            documentValue = "11447.80",
-            documentDate = "14/07/2023"
-        ),
-        ExpenseModel(
-            "Gsatos com comida",
-            documentValue = "11447.80",
-            documentDate = "14/07/2023"
-        )
-    )
+    val listExpenseModel: List<ExpenseModel> = listOf()
 ) {
 
 

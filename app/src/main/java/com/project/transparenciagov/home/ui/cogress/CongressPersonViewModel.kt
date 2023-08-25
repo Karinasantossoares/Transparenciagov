@@ -55,9 +55,11 @@ internal class CongressPersonViewModel(
                     updateState { state ->
                         state.setSuccess(list.toMutableList())
                     }
+
                 }
             }
     }
+
 
     fun getAllStates() = viewModelScope.launch(dispatcher) {
         statesUseCase.invoke()
@@ -108,32 +110,21 @@ internal class CongressPersonViewModel(
 
     fun confirmFilterStates(states: List<StatesModel>) {
         updateState { it.showShimmerLoading(true) }
-        if (stateLiveData.value.states != states) {
-            stateLiveData.value.states = states
-            stateLiveData.value.page = 0
-            stateLiveData.value.finishList = false
-            stateLiveData.value.list = mutableListOf()
-            getAllCongressPerson()
-        }
+        stateLiveData.value.states = states
+        stateLiveData.value.page = 0
+        stateLiveData.value.finishList = false
+        stateLiveData.value.list = mutableListOf()
+        getAllCongressPerson()
+
     }
 
-    fun clearAllFilters() {
-        updateState { it.showShimmerLoading(true) }
-        if (stateLiveData.value.hasFilters()) {
-            stateLiveData.value.states = emptyList()
-            stateLiveData.value.page = 0
-            stateLiveData.value.finishList = false
-            stateLiveData.value.list = mutableListOf()
-            getAllCongressPerson()
-        }
-    }
 
     fun openBottomSheet() {
         CongressPersonAction.OpenBottomSheet.run()
     }
 
     fun onPagination() {
-        if (stateLiveData.value.finishList.not()){
+        if (stateLiveData.value.finishList.not()) {
             getAllCongressPerson()
         }
     }

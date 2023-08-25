@@ -12,7 +12,7 @@ data class CongressPersonState(
     val listStatesModel: List<StatesModel> = emptyList(),
     var query: String = "",
     var page: Int = 0,
-    var states: List<StatesModel> = emptyList()
+    var states: List<StatesModel> = emptyList(),
 ) {
 
     fun showShimmerLoading(isLoading: Boolean) = copy(shimmerLoading = isLoading)
@@ -28,9 +28,6 @@ data class CongressPersonState(
         listStatesModel = listStates
     )
 
-    fun hasFilters(): Boolean {
-        return states.isNotEmpty() || query.isNotEmpty()
-    }
 
     fun getNextPage(incrementPage: Boolean): Int {
         return if (incrementPage) ++page else page

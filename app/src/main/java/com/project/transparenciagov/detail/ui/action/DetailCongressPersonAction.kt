@@ -10,4 +10,6 @@ sealed class DetailCongressPersonAction : BaseEvent() {
     ) : DetailCongressPersonAction()
 
     data class ShowToast(val message: String) : DetailCongressPersonAction()
+
+    data class NavigateToFront(val id:Int) : DetailCongressPersonAction()
 }

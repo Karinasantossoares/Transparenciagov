@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        android:fontFamily="@font/montserrat"
+        android:text="Deputados"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -73,16 +74,23 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <com.project.transparenciagov.core.components.customchip.CustomChipGroup
+        android:id="@+id/customChip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        app:layout_constraintTop_toBottomOf="@id/cardView" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPerson"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_default"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintTop_toBottomOf="@id/customChip"
         app:spanCount="3"
         tools:itemCount="10"
         tools:listitem="@layout/profile_congress_item" />

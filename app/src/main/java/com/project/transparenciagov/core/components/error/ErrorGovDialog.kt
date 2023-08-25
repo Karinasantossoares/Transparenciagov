@@ -57,7 +57,7 @@ class ErrorGovDialog : DialogFragment() {
 
     override fun show(manager: FragmentManager, tag: String?) {
         if(isAdded) return
-        super.show(manager, tag)
+        super.showNow(manager, tag)
     }
 
     private fun onClickListener() {

@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.project.transparenciagov.R
 import com.project.transparenciagov.core.components.error.ErrorGovDialog
 import com.project.transparenciagov.core.ext.loadImage
 import com.project.transparenciagov.databinding.FragmentCongressPersonDetailBinding
 import com.project.transparenciagov.detail.ui.action.DetailCongressPersonAction
-import com.project.transparenciagov.detail.ui.state.DetailCongressPersonState
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -43,7 +44,14 @@ class DetailCongressPersonFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservable()
+        setupListeners()
         binding.recyclerViewDetail.adapter = adapter
+    }
+
+    private fun setupListeners() {
+        binding.category1.root.setOnClickListener {
+            viewModel.navigateToFrontCongress()
+        }
     }
 
 
@@ -79,6 +87,14 @@ class DetailCongressPersonFragment : Fragment() {
                     is DetailCongressPersonAction.ShowToast -> {
                         Snackbar.make(binding.root, event.message, Snackbar.LENGTH_LONG).show()
 
+                    }
+
+                    is DetailCongressPersonAction.NavigateToFront -> {
+                        findNavController().navigate(
+                            R.id.detailToFront, bundleOf(
+                                KEY_ARGS_ID to event.id
+                            )
+                        )
                     }
 
                 }

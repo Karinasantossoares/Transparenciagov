@@ -18,5 +18,14 @@
         android:id="@+id/detailCongressPersonFragment"
         tools:layout="@layout/fragment_congress_person_detail"
         android:name="com.project.transparenciagov.detail.ui.DetailCongressPersonFragment"
-        android:label="DetailCongressPersonFragment" />
+        android:label="DetailCongressPersonFragment" >
+        <action
+            android:id="@+id/detailToFront"
+            app:destination="@id/frontCongressPersonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/frontCongressPersonFragment"
+        tools:layout="@layout/fragment_front_congress_person"
+        android:name="com.project.transparenciagov.categoryfront.presentation.FrontCongressPersonFragment"
+        android:label="FrontCongressPersonFragment" />
 </navigation>

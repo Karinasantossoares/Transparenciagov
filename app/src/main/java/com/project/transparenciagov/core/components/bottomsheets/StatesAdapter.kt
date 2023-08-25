@@ -1,10 +1,8 @@
-package com.project.transparenciagov.core.components.statesbottomsheet
+package com.project.transparenciagov.core.components.bottomsheets
 
 import android.content.res.ColorStateList
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -16,7 +14,7 @@ import com.project.transparenciagov.home.domain.model.StatesModel
 class StatesAdapter :
     ListAdapter<StatesModel, StatesAdapter.StatesViewHolder>(DiffUtilStates()) {
 
-    val listItemSelected: MutableList<StatesModel> = mutableListOf()
+    var listItemSelected: MutableList<StatesModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatesViewHolder {
         val binding = StatesItemsBinding.inflate(LayoutInflater.from(parent.context))
